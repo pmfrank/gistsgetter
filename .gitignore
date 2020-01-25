@@ -64,7 +64,7 @@ windows/
 android/
 linux/
 django/
-
+*/gistsgetter.dist-info/
 
 # Environments
 .env
