@@ -1,2 +1,2 @@
 def search(widget, string):
-    print(string.id)
+    print(string)

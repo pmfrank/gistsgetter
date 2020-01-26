@@ -25,7 +25,7 @@ class GistsGetter(toga.App):
         select_label = toga.Label('Search By', style=Pack(padding=5, alignment='center'))
         select = toga.Selection(items=['UserID','GistID'])
         select_input = toga.TextInput(style=Pack(padding=5, flex=1),placeholder='User or Gist ID')
-        select_button = toga.Button('Search',style=Pack(padding=5),on_press=partial(search, 'x'))
+        select_button = toga.Button('Search',style=Pack(padding=5),on_press=partial(search,string = 'x'))
 
         top_box.add(select_label)
         top_box.add(select)
