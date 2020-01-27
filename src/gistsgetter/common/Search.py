@@ -13,5 +13,3 @@ def search(url, username, password):
         gist_info = gist_info + f"{filename}\n{content['content']}\n"
 
     return gist_info
-
-# search('http://api.github.com/gists/446db2c5b2735ad6c97659942af1c193','pmfrank','Mahala0!')
