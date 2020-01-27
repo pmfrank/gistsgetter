@@ -4,7 +4,6 @@ An application dedicated to creating, editing, and deleting Gists in GitHub
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
-from .common.GetUrlToken import get_token
 from .common.Search import search
 from functools import partial
 

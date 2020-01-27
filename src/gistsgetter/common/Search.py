@@ -10,8 +10,8 @@ def search(url, username, password):
     if response.status_code != 200:
         return 'Failed to authenticate'
     for filename, content in response.json()['files'].items():
-        gist_info = f"{filename}\n{content['content']}"
+        gist_info = gist_info + f"{filename}\n{content['content']}\n"
 
     return gist_info
 
-# search('http://api.github.com/gists/154848bccfed0566d103f651a412c949','pmfrank','Mahala0!')
+# search('http://api.github.com/gists/446db2c5b2735ad6c97659942af1c193','pmfrank','Mahala0!')
