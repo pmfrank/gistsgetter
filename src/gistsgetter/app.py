@@ -18,9 +18,10 @@ class GistsGetter(toga.App):
         show the main window.
         """
         main_box = toga.Box(style=Pack(direction=COLUMN))
-        top_box = toga.Box(style=Pack(direction=ROW, padding=5, alignment='top', flex=0))
-        middle_box = toga.Box(style=Pack(padding=5, alignment='center', flex=1))
-        bottom_box = toga.Box(style=Pack(direction=ROW, padding=(5,5,20,5), alignment='bottom', flex=0)) # Padding - Top, Right, Botom, Left
+        top_box = toga.Box(style=Pack(direction=ROW, padding=5, alignment='top'))
+        middle_box = toga.Box(style=Pack(direction=ROW,padding=5, alignment='center', flex=1))
+        button_box = toga.Box(style=Pack(padding=5, alignment='right'))
+        bottom_box = toga.Box(style=Pack(direction=ROW, padding=(5,5,20,5), alignment='bottom')) # Padding - Top, Right, Botom, Left
 
         select_label = toga.Label('Search By', style=Pack(padding=5, alignment='center'))
         self.select = toga.Selection(items=['UserID','GistID'])
@@ -31,7 +32,12 @@ class GistsGetter(toga.App):
 
         self.results = toga.MultilineTextInput(style=Pack(padding=(0,5), flex=1),readonly = True)
 
+        copy_button = toga.Button('Copy', style=Pack(padding=5))
+
+        button_box.add(copy_button)
+
         middle_box.add(self.results)
+        middle_box.add(button_box)
 
         top_box.add(select_label)
         top_box.add(self.select)
@@ -51,7 +57,7 @@ class GistsGetter(toga.App):
         main_box.add(top_box)
         main_box.add(middle_box)
         main_box.add(bottom_box)
-        self.main_window = toga.MainWindow(title=self.formal_name)
+        self.main_window = toga.MainWindow(title=self.formal_name, size=(640,480))
         self.main_window.content = main_box
         self.main_window.show()
 
