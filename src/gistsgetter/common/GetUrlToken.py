@@ -1,6 +1,5 @@
 def get_token(string, delim):
-
-    
+   
     tokens = string.split(delim)
     url = tokens[0]
     
