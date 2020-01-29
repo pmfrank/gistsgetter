@@ -1,7 +1,9 @@
 """
 An application dedicated to creating, editing, and deleting Gists in GitHub
 """
+from __future__ import absolute_import
 import toga
+import pyperclip
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 from .common.Search import search
@@ -32,7 +34,7 @@ class GistsGetter(toga.App):
 
         self.results = toga.MultilineTextInput(style=Pack(padding=(0,5), flex=1),readonly = True)
 
-        copy_button = toga.Button('Copy', style=Pack(padding=5))
+        copy_button = toga.Button('Copy to Clipboard', style=Pack(padding=5),on_press=self.copy_to_clipboard)
 
         button_box.add(copy_button)
 
@@ -63,6 +65,8 @@ class GistsGetter(toga.App):
 
     def search_by(self, widget):
 
+        global results
+
         if not self.select_input.value or not self.login_input.value or not self.pw_input:
             self.results.value = 'All fields required'
             return
@@ -74,7 +78,14 @@ class GistsGetter(toga.App):
             gist_id = self.select_input.value
             url = self.__get_token('https://api.github.com/gists{/gist_id}','{')
             results = search(url, self.login_input.value,self.pw_input.value)
+            for filename in results:
+                print(results[filename])
             self.results.value = results
+
+    def copy_to_clipboard(self, widget):
+        global results
+        for filename in results:
+            pyperclip.copy(results[filename])
 
 
     def __get_token(self, string, delim):
